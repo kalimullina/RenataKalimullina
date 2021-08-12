@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="CalculatorTests">
+    <test name="allTest">
+        <packages>
+            <package name="com.epam.tc.RenataKalimullina.hw1"/>
+        </packages>
+    </test>
+</suite>

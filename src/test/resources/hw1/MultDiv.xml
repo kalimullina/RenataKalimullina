@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="MultDivSuite">
+    <test name="MultDivTest">
+        <groups>
+            <run>
+                <include name="MultDivGroup"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.epam.tc.RenataKalimullina.hw1"></package>
+        </packages>
+    </test>
+</suite>
