@@ -1,7 +1,8 @@
-package com.epam.tc.RenataKalimullina.hw1;
+package com.epam.tc.hw1;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import com.epam.tc.hw1.data.DataProviders;
 import org.testng.annotations.Test;
 
 public class DivisionTest extends TestBase  {

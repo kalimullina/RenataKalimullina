@@ -1,4 +1,4 @@
-package com.epam.tc.RenataKalimullina.hw1;
+package com.epam.tc.hw1.data;
 
 import org.testng.annotations.DataProvider;
 

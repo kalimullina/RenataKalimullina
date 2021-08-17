@@ -14,11 +14,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 
-        <maven-surefire-plugin.suiteXmlFile.forRunAllTests>${project.build.testOutputDirectory}/hw1/SunSub.xml
-        </maven-surefire-plugin.suiteXmlFile.forRunAllTests>
+        <testng.suite.file>${project.build.testOutputDirectory}/hw1/SumSub.xml</testng.suite.file>
+        <!--<maven-surefire-plugin.suiteXmlFile.forRunAllTests>${project.build.testOutputDirectory}/hw1/SunSub.xml
+        </maven-surefire-plugin.suiteXmlFile.forRunAllTests>-->
 
         <testng.version>7.4.0</testng.version>
         <assertj-core.version>3.20.2</assertj-core.version>
+        <checkstyle.version>8.42</checkstyle.version>
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
     </properties>
 
 
@@ -44,12 +47,6 @@
             <type>jar</type>
             <systemPath>${project.basedir}/calculator-1.0.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 
@@ -60,13 +57,45 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>
+                        <!--  pay attention to use exact url for checkstyle plugin ruleset  -->
+                        https://raw.githubusercontent.com/DmitryKhodakovsky/epam-training-center-code-checkers-configurations/main/checkstyle/checkstyle.xml
+                    </configLocation>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
-<!--                <configuration>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+                <!--<configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>${maven-surefire-plugin.suiteXmlFile.forRunAllTests}</suiteXmlFile>
                     </suiteXmlFiles>
