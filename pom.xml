@@ -14,14 +14,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 
-        <testng.suite.file>${project.build.testOutputDirectory}/hw1/SumSub.xml</testng.suite.file>
-        <!--<maven-surefire-plugin.suiteXmlFile.forRunAllTests>${project.build.testOutputDirectory}/hw1/SunSub.xml
-        </maven-surefire-plugin.suiteXmlFile.forRunAllTests>-->
-
         <testng.version>7.4.0</testng.version>
         <assertj-core.version>3.20.2</assertj-core.version>
         <checkstyle.version>8.42</checkstyle.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <suiteXmlFile>SumSub.xml</suiteXmlFile>
     </properties>
 
 
@@ -92,38 +89,37 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
+                        <suiteXmlFile>src\test\resources\hw1\${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
-                <!--<configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>${maven-surefire-plugin.suiteXmlFile.forRunAllTests}</suiteXmlFile>
-                    </suiteXmlFiles>
-                </configuration>-->
             </plugin>
         </plugins>
     </build>
 
     <profiles>
-<!--        <profile>
+        <profile>
             <id>runAllTests-profile</id>
             <properties>
-                <testng.suite.file>${project.build.testOutputDirectory}/hw1/runAllTests.xml</testng.suite.file>
-            </properties>
-        </profile>-->
-
-        <profile>
-            <id>runSumSubTests-profile</id>
-            <properties>
-                <testng.suite.file>${project.build.testOutputDirectory}/hw1/SumSub.xml</testng.suite.file>
+                <suiteXmlFile>runAllTests.xml</suiteXmlFile>
             </properties>
         </profile>
 
-    <!--    <profile>
+        <profile>
+            <id>runSumSubTests-profile</id>
+            <activation>
+                <!--If no profile is selected explicitly, then this profile is activated -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteXmlFile>SumSub.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
             <id>runMultDivTests-profile</id>
             <properties>
-                <testng.suite.file>${project.build.testOutputDirectory}/hw1/MultDiv.xml</testng.suite.file>
+                <suiteXmlFile>MultDiv.xml</suiteXmlFile>
             </properties>
-        </profile>-->
+        </profile>
     </profiles>
 </project>
