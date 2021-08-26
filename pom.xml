@@ -135,17 +135,11 @@
             </properties>
         </profile>
 
-        <!--profiles for hw2-->
+        <!--profile for hw2-->
         <profile>
-            <id>runEx1Tests-profile</id>
+            <id>runHW2Tests-profile</id>
             <properties>
-                <suiteXmlFile>hw2\Ex1Suite.xml</suiteXmlFile>
-            </properties>
-        </profile>
-        <profile>
-            <id>runEx2Tests-profile</id>
-            <properties>
-                <suiteXmlFile>hw2\Ex2Suite.xml</suiteXmlFile>
+                <suiteXmlFile>hw2\testNGHw2.xml</suiteXmlFile>
             </properties>
         </profile>
     </profiles>

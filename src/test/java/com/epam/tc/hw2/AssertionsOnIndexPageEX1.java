@@ -2,32 +2,17 @@ package com.epam.tc.hw2;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.List;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-public class Ex1 {
-    private WebDriver webDriver;
-    private WebElement webElement;
-
-    @BeforeClass
-    public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
-    }
+public class AssertionsOnIndexPageEX1 extends TestBase {
 
     @Test
-    public void userHomePageTest() {
-        webDriver = new ChromeDriver();
-        webDriver.manage().window().maximize();
-
+    public void userIndexPageTest() {
 
         //1. Open test site by URL
         webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
@@ -76,31 +61,31 @@ public class Ex1 {
 
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        webElement = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[1]/div/span"));
-        assertThat(webElement.getText())
+        WebElement fisrtTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[1]/div/span"));
+        assertThat(fisrtTextUnderIcon.getText())
             .as("Fisrt text on the Index Page under icon was wrong")
             .isEqualTo("To include good practices\nand ideas from successful\nEPAM project");
-        webElement = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[2]/div/span"));
-        assertThat(webElement.getText())
+        WebElement secondTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[2]/div/span"));
+        assertThat(secondTextUnderIcon.getText())
             .as("Second text on the Index Page under icon was wrong")
             .isEqualTo("To be flexible and\ncustomizable");
-        webElement = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[3]/div/span"));
-        assertThat(webElement.getText())
+        WebElement thirdTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[3]/div/span"));
+        assertThat(thirdTextUnderIcon.getText())
             .as("Third text on the Index Page under icon was wrong")
             .isEqualTo("To be multiplatform");
-        webElement = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[4]/div/span"));
-        assertThat(webElement.getText())
+        WebElement fourthTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[4]/div/span"));
+        assertThat(fourthTextUnderIcon.getText())
             .as("Fourth text on the Index Page under icon was wrong")
             .isEqualTo("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
 
         //8. Assert that there is the iframe with “Frame Button” exist
-        webElement = webDriver.findElement(By.id("frame"));
-        webElement.isDisplayed();
+        WebElement frameWithButton = webDriver.findElement(By.id("frame"));
+        frameWithButton.isDisplayed();
 
 
         //9. Switch to the iframe and check that there is “Frame Button” in the iframe
-        webDriver.switchTo().frame(webElement);
+        webDriver.switchTo().frame(frameWithButton);
         webDriver.findElement(By.id("frame-button")).isDisplayed();
 
 
@@ -122,12 +107,5 @@ public class Ex1 {
         assertThat(webDriver.findElement(By.cssSelector("a[href='metals-colors.html']")).getText())
             .as("Fourth item in the Left Section was wrong")
             .isEqualTo("METALS & COLORS");
-    }
-
-
-    @AfterClass
-    public void clear() {
-        //12. Close Browser
-        webDriver.close();
     }
 }

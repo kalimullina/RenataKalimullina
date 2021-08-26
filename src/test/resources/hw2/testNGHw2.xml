@@ -3,7 +3,8 @@
 <suite name="homework2_Ex1_Suite">
   <test name="homework2_Ex1_Test">
     <classes>
-      <class name="com.epam.tc.hw2.Ex1"/>
+      <class name="com.epam.tc.hw2.AssertionsOnIndexPageEX1"/>
+      <class name="com.epam.tc.hw2.AssertionsOnDifferentElementsPageEX2"/>
     </classes>
   </test>
 </suite>
