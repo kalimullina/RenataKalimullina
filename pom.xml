@@ -30,7 +30,7 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -120,10 +120,10 @@
         </profile>
         <profile>
             <id>runSumSubTests-profile</id>
-            <activation>
-                <!--If no profile is selected explicitly, then this profile is activated -->
+            <!--<activation>
+                &lt;!&ndash;If no profile is selected explicitly, then this profile is activated &ndash;&gt;
                 <activeByDefault>true</activeByDefault>
-            </activation>
+            </activation>-->
             <properties>
                 <suiteXmlFile>hw1\SumSub.xml</suiteXmlFile>
             </properties>
@@ -140,6 +140,19 @@
             <id>runHW2Tests-profile</id>
             <properties>
                 <suiteXmlFile>hw2\testNGHw2.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+
+        <!--profile for hw3PageObjects-->
+        <profile>
+            <id>runHW3Tests-profile</id>
+            <activation>
+                <!--If no profile is selected explicitly, then this profile is activated -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteXmlFile>hw2\testNGHw3.xml</suiteXmlFile>
             </properties>
         </profile>
     </profiles>
