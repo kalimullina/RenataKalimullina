@@ -2,7 +2,6 @@ package com.epam.tc.hw3;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import hw3.TestBase;
 import org.testng.annotations.Test;
 
 
@@ -12,10 +11,10 @@ public class Ex1VoidPageObject extends TestBase {
     public void userHomePageTest() {
 
         //1. Open test site by URL
-        homePage.openPage();
+        homePage.openPage(TestBase.webDriver);
 
         //2. Assert Browser title
-        assertThat(homePage.getTittle())
+        assertThat(homePage.getTittle(TestBase.webDriver))
             .as("The browser title was wrong")
             .isEqualTo("Home Page");
 

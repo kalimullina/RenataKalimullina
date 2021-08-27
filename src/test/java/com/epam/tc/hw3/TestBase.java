@@ -1,4 +1,4 @@
-package hw3;
+package com.epam.tc.hw3;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;

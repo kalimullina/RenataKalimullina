@@ -152,7 +152,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suiteXmlFile>hw2\testNGHw3.xml</suiteXmlFile>
+                <suiteXmlFile>hw3\testNGHw3.xml</suiteXmlFile>
             </properties>
         </profile>
     </profiles>

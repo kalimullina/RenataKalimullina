@@ -1,4 +1,4 @@
-package hw3;
+package com.epam.tc.hw3;
 
 import java.util.List;
 import org.openqa.selenium.WebElement;

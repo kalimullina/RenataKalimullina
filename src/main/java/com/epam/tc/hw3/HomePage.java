@@ -1,5 +1,6 @@
-package hw3;
+package com.epam.tc.hw3;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -18,12 +19,12 @@ public class HomePage {
     private WebElement loginButton;
 
 
-    public void openPage() {
-        TestBase.webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
+    public void openPage(WebDriver webDriver) {
+        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
     }
 
-    public String getTittle() {
-        return TestBase.webDriver.getTitle();
+    public String getTittle(WebDriver webDriver) {
+        return webDriver.getTitle();
     }
 
     public void login(String name, String password) {
