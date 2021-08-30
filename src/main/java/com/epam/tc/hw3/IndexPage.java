@@ -88,37 +88,41 @@ public class IndexPage {
         return metalsColorsItemOnHeaderSection.getText();
     }
 
-    public void checkFourImages() {
-        firstImage.isDisplayed();
-        secondImage.isDisplayed();
-        thirdImage.isDisplayed();
-        fourthImage.isDisplayed();
-    }
-
-    public String getTextUnderIcons(int number) {
-        if (number == 1) {
-            return firstTextUnderIcons.getText();
-        } else if (number == 2) {
-            return secondTextUnderIcons.getText();
-        } else if (number == 3) {
-            return thirdTextUnderIcons.getText();
-        } else if (number == 4) {
-            return fourthTextUnderIcons.getText();
+    public boolean checkFourImages() {
+        if (firstImage.isDisplayed() && secondImage.isDisplayed()
+            && thirdImage.isDisplayed() && fourthImage.isDisplayed()) {
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
 
-    public void iframeIsExisted() {
-        iframeWithFrameButton.isDisplayed();
+
+    public String getTextUnderIcons(int number) {
+        switch (number) {
+            case 1:
+                return firstTextUnderIcons.getText();
+            case 2:
+                return secondTextUnderIcons.getText();
+            case 3:
+                return thirdTextUnderIcons.getText();
+            case 4:
+                return fourthTextUnderIcons.getText();
+            default:
+                return null;
+        }
+    }
+
+    public boolean iframeIsExisted() {
+        return iframeWithFrameButton.isDisplayed();
     }
 
     public WebElement returnIframe() {
         return iframeWithFrameButton;
     }
 
-    public void checkIframeButton() {
-        iframeButton.isDisplayed();
+    public boolean checkIframeButton() {
+        return iframeButton.isDisplayed();
     }
 
     public String fourItemsLeftSection(int number) {

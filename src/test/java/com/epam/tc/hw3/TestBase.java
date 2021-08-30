@@ -37,8 +37,10 @@ public abstract class TestBase {
     }
 
     @AfterClass
-    public void clear() {
+    public void clear() throws IOException {
         //12. Close Browser
         webDriver.close();
+
+        file.close();
     }
 }

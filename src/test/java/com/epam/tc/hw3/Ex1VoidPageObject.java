@@ -42,7 +42,9 @@ public class Ex1VoidPageObject extends TestBase {
 
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
-        indexPage.checkFourImages();
+        assertThat(indexPage.checkFourImages())
+            .as("Displaying the images on the Index Page was wrong")
+            .isEqualTo(true);
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
         assertThat(indexPage.getTextUnderIcons(1))
@@ -59,11 +61,15 @@ public class Ex1VoidPageObject extends TestBase {
             .isEqualTo("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
         //8. Assert that there is the iframe with “Frame Button” exist
-        indexPage.iframeIsExisted();
+        assertThat(indexPage.iframeIsExisted())
+            .as("Displaying the iframe “Frame Button” was wrong")
+            .isEqualTo(true);
 
         //9. Switch to the iframe and check that there is “Frame Button” in the iframe
         webDriver.switchTo().frame(indexPage.returnIframe());
-        indexPage.checkIframeButton();
+        assertThat(indexPage.checkIframeButton())
+            .as("Displaying “Frame Button” in the iframe was wrong")
+            .isEqualTo(true);
 
         //10. Switch to original window back
         webDriver.switchTo().defaultContent();

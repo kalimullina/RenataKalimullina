@@ -45,7 +45,6 @@ public class DifferentElementsPage {
     }
 
     public String getLogRows() {
-        String result = logRows.getText();
-        return result;
+        return logRows.getText();
     }
 }
