@@ -32,7 +32,7 @@ public abstract class TestBase {
         differentElementsPage = PageFactory.initElements(webDriver, DifferentElementsPage.class);
 
         property = new Properties();
-        file = new FileInputStream("src/test/resources/test.properties");
+        file = new FileInputStream("src/test/resources/hw3/test.properties");
         property.load(file);
     }
 
