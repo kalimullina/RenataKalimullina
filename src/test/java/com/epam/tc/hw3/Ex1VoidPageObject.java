@@ -2,8 +2,7 @@ package com.epam.tc.hw3;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-
-
+import org.testng.annotations.Test;
 
 public class Ex1VoidPageObject extends TestBase {
 
