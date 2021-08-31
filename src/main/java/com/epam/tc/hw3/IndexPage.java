@@ -109,7 +109,7 @@ public class IndexPage {
             case 4:
                 return fourthTextUnderIcons.getText();
             default:
-                return null;
+                return "Wrong";
         }
     }
 
