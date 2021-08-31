@@ -61,19 +61,23 @@ public class AssertionsOnIndexPageEX1 extends TestBase {
 
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        WebElement fisrtTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[1]/div/span"));
+        WebElement fisrtTextUnderIcon = webDriver.findElement(
+            By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[1]/div/span"));
         assertThat(fisrtTextUnderIcon.getText())
             .as("Fisrt text on the Index Page under icon was wrong")
             .isEqualTo("To include good practices\nand ideas from successful\nEPAM project");
-        WebElement secondTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[2]/div/span"));
+        WebElement secondTextUnderIcon = webDriver.findElement(
+            By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[2]/div/span"));
         assertThat(secondTextUnderIcon.getText())
             .as("Second text on the Index Page under icon was wrong")
             .isEqualTo("To be flexible and\ncustomizable");
-        WebElement thirdTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[3]/div/span"));
+        WebElement thirdTextUnderIcon = webDriver.findElement(
+            By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[3]/div/span"));
         assertThat(thirdTextUnderIcon.getText())
             .as("Third text on the Index Page under icon was wrong")
             .isEqualTo("To be multiplatform");
-        WebElement fourthTextUnderIcon = webDriver.findElement(By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[4]/div/span"));
+        WebElement fourthTextUnderIcon = webDriver.findElement(
+            By.xpath("/html/body/div/div[2]/main/div[2]/div[2]/div[4]/div/span"));
         assertThat(fourthTextUnderIcon.getText())
             .as("Fourth text on the Index Page under icon was wrong")
             .isEqualTo("Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");

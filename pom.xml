@@ -14,51 +14,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 
-        <testng.version>7.4.0</testng.version>
+        <testng.version>7.1.0</testng.version>
         <assertj-core.version>3.20.2</assertj-core.version>
         <checkstyle.version>8.42</checkstyle.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <suiteXmlFile>SumSub.xml</suiteXmlFile>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <selenium.version>3.141.59</selenium.version>
+
+        <!--Allure-->
+        <allure.version>2.14.0</allure.version>
+        <aspectj.version>1.9.6</aspectj.version>
     </properties>
-
-
-
-    <dependencies>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.epam.tat.module4</groupId>
-            <artifactId>calculator</artifactId>
-            <version>1.0</version>
-            <scope>system</scope>
-            <type>jar</type>
-            <systemPath>${project.basedir}/calculator-1.0.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-        </dependency>
-    </dependencies>
-
 
 
 
@@ -101,14 +68,28 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
+                    <!--<argLine>
+                        &#45;&#45;illegal-access=permit
+                        -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
+                    </argLine>-->
                     <suiteXmlFiles>
                         <!--<suiteXmlFile>src\test\resources\hw1\${suiteXmlFile}</suiteXmlFile>-->
                         <suiteXmlFile>src\test\resources\${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <!--<dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>-->
             </plugin>
         </plugins>
     </build>
+
+
+
 
     <profiles>
         <!--profiles for hw1-->
@@ -120,10 +101,10 @@
         </profile>
         <profile>
             <id>runSumSubTests-profile</id>
-            <activation>
-                <!--If no profile is selected explicitly, then this profile is activated -->
+            <!--<activation>
+                &lt;!&ndash;If no profile is selected explicitly, then this profile is activated &ndash;&gt;
                 <activeByDefault>true</activeByDefault>
-            </activation>
+            </activation>-->
             <properties>
                 <suiteXmlFile>hw1\SumSub.xml</suiteXmlFile>
             </properties>
@@ -142,5 +123,77 @@
                 <suiteXmlFile>hw2\testNGHw2.xml</suiteXmlFile>
             </properties>
         </profile>
+
+
+        <!--profile for hw3PageObjects-->
+        <profile>
+            <id>runHW3Tests-profile</id>
+            <activation>
+                <!--If no profile is selected explicitly, then this profile is activated -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suiteXmlFile>hw3\testNGHw3.xml</suiteXmlFile>
+            </properties>
+        </profile>
     </profiles>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <!--<scope>test</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.epam.tat.module4</groupId>
+            <artifactId>calculator</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <type>jar</type>
+            <systemPath>${project.basedir}/calculator-1.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
+
+
+        <!--Allure-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+    </dependencies>
+
+
+
+   <!-- <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>-->
 </project>

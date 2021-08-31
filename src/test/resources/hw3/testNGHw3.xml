@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="homework2_Ex2_Suite">
+  <test name="homework2_Ex2_Test">
+
+    <packages>
+      <package name="com.epam.tc.hw3" />
+    </packages>
+
+  </test>
+</suite>
