@@ -24,7 +24,7 @@
 
         <!--Allure-->
         <allure.version>2.14.0</allure.version>
-        <aspectj.version>1.9.6</aspectj.version>
+        <aspectj.version>1.9.5</aspectj.version>
     </properties>
 
 
@@ -68,24 +68,22 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <!--Allure-->
-                    <argLine>
-                        --illegal-access=permit
+                    <!--<argLine>
+                        &#45;&#45;illegal-access=permit
                         -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                    <!---->
+                    </argLine>-->
                     <suiteXmlFiles>
+                        <!--<suiteXmlFile>src\test\resources\hw1\${suiteXmlFile}</suiteXmlFile>-->
                         <suiteXmlFile>src\test\resources\${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
-                <!--Allure-->
-                <dependencies>
+                <!--<dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
                     </dependency>
-                </dependencies>
+                </dependencies>-->
             </plugin>
         </plugins>
     </build>
@@ -184,8 +182,8 @@
     </dependencies>
 
 
-    <!--Allure-->
-    <reporting>
+
+   <!-- <reporting>
         <excludeDefaults>true</excludeDefaults>
         <plugins>
             <plugin>
@@ -197,5 +195,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </reporting>
+    </reporting>-->
 </project>
