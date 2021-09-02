@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="homework3_Suite">
-  <test name="homework3_Test">
+<suite name="homework4_Suite">
+  <test name="homework4_Test">
 
     <packages>
-      <package name="com.epam.tc.hw3" />
+      <package name="com.epam.tc.hw4" />
     </packages>
 
   </test>
