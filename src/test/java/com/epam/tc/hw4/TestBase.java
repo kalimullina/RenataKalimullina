@@ -2,9 +2,9 @@ package com.epam.tc.hw4;
 
 import static io.qameta.allure.Allure.step;
 
-import com.epam.tc.hw3.DifferentElementsPage;
-import com.epam.tc.hw3.HomePage;
-import com.epam.tc.hw3.IndexPage;
+import com.epam.tc.hw4.pages.DifferentElementsPage;
+import com.epam.tc.hw4.pages.HomePage;
+import com.epam.tc.hw4.pages.IndexPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
