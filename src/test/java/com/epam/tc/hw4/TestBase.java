@@ -29,13 +29,12 @@ public abstract class TestBase {
 
     @BeforeClass(description = "Setting up test environment")
     public void setUp(ITestContext context) throws IOException {
-        step("Browser initialization");
+
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
         context.setAttribute("driver", webDriver);
 
-        step("Pages initialization");
         homePage = PageFactory.initElements(webDriver, HomePage.class);
         indexPage = PageFactory.initElements(webDriver, IndexPage.class);
         differentElementsPage = PageFactory.initElements(webDriver, DifferentElementsPage.class);
