@@ -1,13 +1,13 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw4;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import org.testng.annotations.Test;
 
-public class Ex1VoidPageObject extends TestBase {
+public class Ex1WithMistake extends TestBase {
 
     @Test
-    public void userHomePageTest() {
+    public void userIndexPageFailedTest() {
 
         //1. Open test site by URL
         homePage.openPage(TestBase.webDriver);
@@ -23,7 +23,7 @@ public class Ex1VoidPageObject extends TestBase {
         //4. Assert Username is loggined
         assertThat(indexPage.getLoggedUser())
             .as("Username was wrong")
-            .isEqualTo("ROMAN IOVLEV");
+            .isEqualTo("ROMAN IOVLev");
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         assertThat(indexPage.getHomeItemOnHeaderSection())
@@ -87,4 +87,6 @@ public class Ex1VoidPageObject extends TestBase {
             .as("Fourth item in the Left Section was wrong")
             .isEqualTo("METALS & COLORS");
     }
+
+
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="homework2_Ex1_Suite">
-  <test name="homework2_Ex1_Test">
+<suite name="homework2_Suite">
+  <test name="homework2_Test">
     <classes>
       <class name="com.epam.tc.hw2.AssertionsOnIndexPageEX1"/>
       <class name="com.epam.tc.hw2.AssertionsOnDifferentElementsPageEX2"/>

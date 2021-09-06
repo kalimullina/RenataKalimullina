@@ -1,5 +1,10 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw4;
 
+import static io.qameta.allure.Allure.step;
+
+import com.epam.tc.hw4.pages.DifferentElementsPage;
+import com.epam.tc.hw4.pages.HomePage;
+import com.epam.tc.hw4.pages.IndexPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -7,6 +12,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -21,11 +27,13 @@ public abstract class TestBase {
     protected Properties property;
 
 
-    @BeforeClass
-    public void setupClass() throws IOException {
+    @BeforeClass(description = "Setting up test environment")
+    public void setUp(ITestContext context) throws IOException {
+
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();
+        context.setAttribute("driver", webDriver);
 
         homePage = PageFactory.initElements(webDriver, HomePage.class);
         indexPage = PageFactory.initElements(webDriver, IndexPage.class);
@@ -36,8 +44,8 @@ public abstract class TestBase {
         property.load(file);
     }
 
-    @AfterClass
-    public void clear() throws IOException {
+    @AfterClass(description = "Closing driver")
+    public void tearDown() throws IOException {
         //12. Close Browser
         webDriver.close();
 

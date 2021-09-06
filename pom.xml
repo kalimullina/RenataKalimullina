@@ -21,6 +21,7 @@
         <suiteXmlFile>SumSub.xml</suiteXmlFile>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <selenium.version>3.141.59</selenium.version>
+        <lombok.version>1.18.20</lombok.version>
 
         <!--Allure-->
         <allure.version>2.14.0</allure.version>
@@ -68,22 +69,23 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <!--<argLine>
-                        &#45;&#45;illegal-access=permit
+                    <!--Allure-->
+                    <argLine>
                         -javaagent:"${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar"
-                    </argLine>-->
+                    </argLine>
+                    <!---->
                     <suiteXmlFiles>
-                        <!--<suiteXmlFile>src\test\resources\hw1\${suiteXmlFile}</suiteXmlFile>-->
                         <suiteXmlFile>src\test\resources\${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
-                <!--<dependencies>
+                <!--Allure-->
+                <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
                     </dependency>
-                </dependencies>-->
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -101,10 +103,6 @@
         </profile>
         <profile>
             <id>runSumSubTests-profile</id>
-            <!--<activation>
-                &lt;!&ndash;If no profile is selected explicitly, then this profile is activated &ndash;&gt;
-                <activeByDefault>true</activeByDefault>
-            </activation>-->
             <properties>
                 <suiteXmlFile>hw1\SumSub.xml</suiteXmlFile>
             </properties>
@@ -125,15 +123,24 @@
         </profile>
 
 
-        <!--profile for hw3PageObjects-->
+        <!--profile for hw3-->
         <profile>
             <id>runHW3Tests-profile</id>
+            <properties>
+                <suiteXmlFile>hw3\testNGHw3.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+
+        <!--profile for hw4-->
+        <profile>
+            <id>runHW4Tests-profile</id>
             <activation>
                 <!--If no profile is selected explicitly, then this profile is activated -->
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suiteXmlFile>hw3\testNGHw3.xml</suiteXmlFile>
+                <suiteXmlFile>hw4\testNGHw4.xml</suiteXmlFile>
             </properties>
         </profile>
     </profiles>
@@ -179,11 +186,35 @@
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
         </dependency>
+
+
+        <!--JDI-->
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>1.3.13</version>
+        </dependency>
+
+        <!--For json parsing-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.8</version>
+        </dependency>
+
+
+
+        <!--<dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>-->
     </dependencies>
 
 
-
-   <!-- <reporting>
+    <!--Allure-->
+    <reporting>
         <excludeDefaults>true</excludeDefaults>
         <plugins>
             <plugin>
@@ -195,5 +226,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </reporting>-->
+    </reporting>
 </project>

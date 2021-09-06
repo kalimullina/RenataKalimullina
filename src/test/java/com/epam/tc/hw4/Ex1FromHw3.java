@@ -1,13 +1,22 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw4;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+import com.epam.tc.hw4.listeners.ScreenshotListener;
+import com.epam.tc.hw4.tags.FeaturesTags;
+import com.epam.tc.hw4.tags.StoriesTags;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-public class Ex1VoidPageObject extends TestBase {
+@Listeners(ScreenshotListener.class)
+@Feature(FeaturesTags.INDEX_PAGE_FUNCTIONALITY)
+@Story(StoriesTags.USER_INDEX_PAGE_TESTING)
+public class Ex1FromHw3 extends TestBase {
 
     @Test
-    public void userHomePageTest() {
+    public void userIndexPageTest() {
 
         //1. Open test site by URL
         homePage.openPage(TestBase.webDriver);
