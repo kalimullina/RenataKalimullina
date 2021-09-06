@@ -25,7 +25,7 @@ public class JdiTest {
             new FileReader("src/test/resources/hw7/JDI_ex8_metalsColorsDataSet.json"),
             DataFromJson.class);
 
-       
+
     }
 
     @AfterSuite(alwaysRun = true)
