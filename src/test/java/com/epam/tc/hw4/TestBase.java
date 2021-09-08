@@ -29,7 +29,6 @@ public abstract class TestBase {
 
     @BeforeClass(description = "Setting up test environment")
     public void setUp(ITestContext context) throws IOException {
-
         WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         webDriver.manage().window().maximize();

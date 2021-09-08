@@ -26,6 +26,9 @@
         <!--Allure-->
         <allure.version>2.14.0</allure.version>
         <aspectj.version>1.9.6</aspectj.version>
+
+        <!--Cucumber-->
+        <io.cucumber.version>6.11.0</io.cucumber.version>
     </properties>
 
 
@@ -135,12 +138,20 @@
         <!--profile for hw4-->
         <profile>
             <id>runHW4Tests-profile</id>
+            <properties>
+                <suiteXmlFile>hw4\testNGHw4.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <!--profile for hw5-->
+        <profile>
+            <id>runHW5Tests-profile</id>
             <activation>
                 <!--If no profile is selected explicitly, then this profile is activated -->
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suiteXmlFile>hw4\testNGHw4.xml</suiteXmlFile>
+                <suiteXmlFile>com\epam\tc\hw5\testng\testNGHw5.xml</suiteXmlFile>
             </properties>
         </profile>
     </profiles>
@@ -204,12 +215,25 @@
 
 
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>-->
+        </dependency>
+
+        <!--Cucumber-->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${io.cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${io.cucumber.version}</version>
+        </dependency>
+
     </dependencies>
 
 
