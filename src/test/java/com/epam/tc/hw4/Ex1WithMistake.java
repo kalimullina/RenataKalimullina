@@ -2,21 +2,12 @@ package com.epam.tc.hw4;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import com.epam.tc.hw4.listeners.ScreenshotListener;
-import com.epam.tc.hw4.tags.FeaturesTags;
-import com.epam.tc.hw4.tags.StoriesTags;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(ScreenshotListener.class)
-@Feature(FeaturesTags.INDEX_PAGE_FUNCTIONALITY)
-@Story(StoriesTags.USER_INDEX_PAGE_TESTING)
-public class Ex1FromHw3 extends TestBase {
+public class Ex1WithMistake extends TestBase {
 
     @Test
-    public void userIndexPageTest() {
+    public void userIndexPageFailedTest() {
 
         //1. Open test site by URL
         homePage.openPage(TestBase.webDriver);
@@ -32,7 +23,7 @@ public class Ex1FromHw3 extends TestBase {
         //4. Assert Username is loggined
         assertThat(indexPage.getLoggedUser())
             .as("Username was wrong")
-            .isEqualTo("ROMAN IOVLEV");
+            .isEqualTo("ROMAN IOVLev");
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
         assertThat(indexPage.getHomeItemOnHeaderSection())
@@ -96,4 +87,6 @@ public class Ex1FromHw3 extends TestBase {
             .as("Fourth item in the Left Section was wrong")
             .isEqualTo("METALS & COLORS");
     }
+
+
 }
