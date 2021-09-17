@@ -2,7 +2,7 @@ package com.epam.tc.hw7.entities;
 
 import java.util.List;
 
-public class Data {
+public class DataFromJson {
 
     private List<Integer> summary;
     private List<String> elements;
@@ -10,12 +10,12 @@ public class Data {
     private String metals;
     private List<String> vegetables;
 
-    public Data() {
+    public DataFromJson() {
 
     }
 
-    public Data(List<Integer> summary, List<String> elements,
-                String color, String metals, List<String> vegetables) {
+    public DataFromJson(List<Integer> summary, List<String> elements,
+                        String color, String metals, List<String> vegetables) {
         this.summary = summary;
         this.elements = elements;
         this.color = color;

@@ -8,7 +8,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.common.Text;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
-import com.epam.tc.hw7.entities.Data;
+import com.epam.tc.hw7.entities.DataFromJson;
 import java.util.List;
 import org.hamcrest.Matchers;
 
@@ -91,29 +91,20 @@ public class JdiMetalsAndColorsPage extends WebPage {
         submitButton.click();
     }
 
-    public void checkResultLog(Data dataFromJson) {
-        Integer summaryActualResult = 0;
-        for (Integer summary : dataFromJson.getSummary()) {
-            summaryActualResult += summary;
-        }
-        summaryResult.shouldBe().text(Matchers.equalTo("Summary: " + summaryActualResult.toString()));
+    public void checkResultLog(DataFromJson dataFromJson) {
 
-        List<String> elements = dataFromJson.getElements();
-        String elementsExpectedResult = elements.get(0);
-        for (int i = 1; i < elements.size(); i++) {
-            elementsExpectedResult = elementsExpectedResult + ", " + elements.get(i);
+        int summaryActualResult = dataFromJson.getSummary().get(0) + dataFromJson.getSummary().get(1);
+        summaryResult.shouldBe().text(Matchers.equalTo("Summary: " + summaryActualResult));
+
+        for (String element : dataFromJson.getElements()) {
+            elementsResult.shouldBe().text(Matchers.containsString(element));
         }
-        elementsResult.shouldBe().text(Matchers.equalTo("Elements: " + elementsExpectedResult));
 
         colorResult.shouldBe().text(Matchers.equalTo("Color: " + dataFromJson.getColor()));
         metalResult.shouldBe().text(Matchers.equalTo("Metal: " + dataFromJson.getMetals()));
 
-
-        List<String> vegetables = dataFromJson.getVegetables();
-        String vegetablesExpectedResult = vegetables.get(0);
-        for (int i = 1; i < vegetables.size(); i++) {
-            vegetablesExpectedResult = vegetablesExpectedResult + ", " + vegetables.get(i);
+        for (String vegetable : dataFromJson.getVegetables()) {
+            vegetablesResult.shouldBe().text(Matchers.containsString(vegetable));
         }
-        vegetablesResult.shouldBe().text(Matchers.equalTo("Vegetables: " + vegetablesExpectedResult));
     }
 }
