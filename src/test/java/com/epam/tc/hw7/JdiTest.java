@@ -25,7 +25,7 @@ public class JdiTest {
     }
 
     @BeforeTest
-    public void befireClass() {
+    public void beforeClass() {
         JdiSite.open();
 
         //Login on JDI site as User
