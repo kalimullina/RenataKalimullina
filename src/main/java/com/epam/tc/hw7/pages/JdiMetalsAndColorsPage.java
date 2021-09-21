@@ -59,6 +59,9 @@ public class JdiMetalsAndColorsPage extends WebPage {
     @UI(".sal-res")
     public Text vegetablesResult;
 
+    @UI("[class='panel-body-list results']")
+    public Text actualResultLog;
+
 
 
     public void chooseSummary(List<Integer> summary) {
@@ -92,19 +95,6 @@ public class JdiMetalsAndColorsPage extends WebPage {
     }
 
     public void checkResultLog(DataFromJson dataFromJson) {
-
-        int summaryActualResult = dataFromJson.getSummary().get(0) + dataFromJson.getSummary().get(1);
-        summaryResult.shouldBe().text(Matchers.equalTo("Summary: " + summaryActualResult));
-
-        for (String element : dataFromJson.getElements()) {
-            elementsResult.shouldBe().text(Matchers.containsString(element));
-        }
-
-        colorResult.shouldBe().text(Matchers.equalTo("Color: " + dataFromJson.getColor()));
-        metalResult.shouldBe().text(Matchers.equalTo("Metal: " + dataFromJson.getMetals()));
-
-        for (String vegetable : dataFromJson.getVegetables()) {
-            vegetablesResult.shouldBe().text(Matchers.containsString(vegetable));
-        }
+        actualResultLog.shouldBe().text(Matchers.equalTo(dataFromJson.getExpectedResultLog()));
     }
 }

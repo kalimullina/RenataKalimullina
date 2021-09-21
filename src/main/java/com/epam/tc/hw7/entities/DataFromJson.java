@@ -42,4 +42,25 @@ public class DataFromJson {
     public List<String> getVegetables() {
         return vegetables;
     }
+
+    public String getExpectedResultLog() {
+
+        int summaryResult = summary.get(0) + summary.get(1);
+
+        StringBuilder elementsResult = new StringBuilder(elements.get(0));
+        for (int i = 1; i < elements.size(); i++) {
+            elementsResult.append(", ").append(elements.get(i));
+        }
+
+        StringBuilder vegetablesResult = new StringBuilder(vegetables.get(0));
+        for (int i = 1; i < vegetables.size(); i++) {
+            vegetablesResult.append(", ").append(vegetables.get(i));
+        }
+
+        return "Summary: " + summaryResult + "\n"
+            + "Elements: " +  elementsResult + "\n"
+            + "Color: " + color + "\n"
+            + "Metal: " + metals + "\n"
+            + "Vegetables: " +  vegetablesResult;
+    }
 }

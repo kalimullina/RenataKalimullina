@@ -30,11 +30,12 @@ public class JdiTest {
 
         //Login on JDI site as User
         JdiSite.login(User.ROMAN);
-        JdiSite.homePage.checkLoggedin(User.ROMAN);
     }
 
     @Test(dataProviderClass = DataProviderJdi.class, dataProvider = "jsonData")
     public void loginTest(DataFromJson dataFromJson) {
+
+        JdiSite.homePage.checkLoggedin(User.ROMAN);
 
         //Open Metals & Colors page by Header menu
         JdiSite.userPage.openPageFromHeaderMenu(MenuOptions.METALS_AND_COLORS);
