@@ -1,25 +1,20 @@
-package com.epam.tc.hw4;
+package com.epam.tc.hw6.tests;
 
-import com.epam.tc.hw4.pages.DifferentElementsPage;
-import com.epam.tc.hw4.pages.HomePage;
-import com.epam.tc.hw4.pages.IndexPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.epam.tc.hw6.driver.WebDriverSingleton;
+import com.epam.tc.hw6.steps.ActionStep;
+import com.epam.tc.hw6.steps.AssertionStep;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public abstract class TestBase {
 
-    protected static WebDriver webDriver;
-    protected HomePage homePage;
-    protected IndexPage indexPage;
-    protected DifferentElementsPage differentElementsPage;
+    ActionStep actionStep;
+    AssertionStep assertionStep;
 
     FileInputStream file;
     protected Properties property;
@@ -27,14 +22,12 @@ public abstract class TestBase {
 
     @BeforeClass(description = "Setting up test environment")
     public void setUp(ITestContext context) throws IOException {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
+        WebDriver webDriver = WebDriverSingleton.getDriver();
+
         webDriver.manage().window().maximize();
         context.setAttribute("driver", webDriver);
-
-        homePage = PageFactory.initElements(webDriver, HomePage.class);
-        indexPage = PageFactory.initElements(webDriver, IndexPage.class);
-        differentElementsPage = PageFactory.initElements(webDriver, DifferentElementsPage.class);
+        actionStep = new ActionStep(webDriver);
+        assertionStep = new AssertionStep(webDriver);
 
         property = new Properties();
         file = new FileInputStream("src/test/resources/hw3/testHw3.properties");
@@ -44,7 +37,7 @@ public abstract class TestBase {
     @AfterClass(description = "Closing driver")
     public void tearDown() throws IOException {
         //12. Close Browser
-        webDriver.close();
+        WebDriverSingleton.closeDriver();
 
         file.close();
     }

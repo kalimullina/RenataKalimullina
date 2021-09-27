@@ -143,13 +143,23 @@
             </properties>
         </profile>
 
-        <!--profile for hw7-->
+
+        <!--profile for hw6-->
         <profile>
-            <id>runHW7JdiTests-profile</id>
+            <id>runHW6Tests-profile</id>
             <activation>
                 <!--If no profile is selected explicitly, then this profile is activated -->
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <properties>
+                <suiteXmlFile>hw6\testNGHw6.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+
+        <!--profile for hw7-->
+        <profile>
+            <id>runHW7JdiTests-profile</id>
             <properties>
                 <suiteXmlFile>hw7\testNGHw7Jdi.xml</suiteXmlFile>
             </properties>
