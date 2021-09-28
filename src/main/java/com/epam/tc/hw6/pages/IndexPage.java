@@ -140,9 +140,6 @@ public class IndexPage {
         return metalsColorsLeftSection.getText();
     }
 
-
-
-
     /*Ex2*/
     public IndexPage clickOnServiceHeaderMenu() {
         serviceOnHeaderMenu.click();

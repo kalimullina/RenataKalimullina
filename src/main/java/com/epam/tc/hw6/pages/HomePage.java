@@ -19,16 +19,6 @@ public class HomePage {
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
-
-    /*@Step("Open test site by URL")
-    public void openPage(WebDriver webDriver) {
-        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
-    }*/
-
-    /*public void open() {
-        webDriver.navigate().to("https://jdi-testing.github.io/jdi-light/index.html");
-    }*/
-
     @Step("Assert Browser title")
     public String getTittle(WebDriver webDriver) {
         return webDriver.getTitle();
